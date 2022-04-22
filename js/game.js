@@ -6,6 +6,7 @@
 // Created on: Apr 2022
 // This is the Phaser3 configuration file
 
+import SplashScene from './splashScene.js'
 
 //* Game scene */
 const config = {
