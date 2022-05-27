@@ -93,6 +93,19 @@ class GameScene extends Phaser.Scene {
     }.bind(this))
   }
 
+    // Collisions between ship and aliens
+    this.physics.add.collider(this.ship, this.alienGroup, function (shipCollide, alienCollide) {
+        this.sound.play("bomb")
+        this.physics.pause()
+        alienCollide.destroy()
+        shipCollide.destroy() this.gameOverText = this.add.text(1920 / 2, 1080 / 2, "Game Over!\nClick to play again", 
+        this.gameOverTextStyle).setOrigin(0.5)
+        this.gameOverText.setInteractive({ useHandCurser: true })
+        this.gameOverText.on("pointerdown", () => this.scenestart("gameScene"))
+      }.bind(this))
+  }
+
+
   /**
    * Should be overridden by your own Scenes.
    * This method is called once per game step while the scene is running.
